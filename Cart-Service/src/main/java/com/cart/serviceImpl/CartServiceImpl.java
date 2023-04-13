@@ -30,13 +30,8 @@ public class CartServiceImpl implements CartService {
     public ResponseEntity<?> addToCartByUserId(Cart cart, Long userId) {
 
         Long productId = cart.getProductId();
-        ResponseEntity<User> u=null;
-        try {
-            u = this.iCartUserService.getUser(userId);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-        if (this.iCartProductService.checkProductId(productId) != null && this.iCartUserService.getUser(userId) != null) {
+
+        //if (this.iCartProductService.checkProductId(productId) != null && this.iCartUserService.getUser(userId) != null) {
             Cart singleCart = this.cartRepository.checkCartProductOfUser(userId, productId);
             if (singleCart != null) {
                 singleCart.setQuantity(cart.getQuantity());
@@ -47,8 +42,8 @@ public class CartServiceImpl implements CartService {
                 cart.setProductTotalPrice((long) (cart.getQuantity() * this.iCartProductService.getProduct(productId).getBody().getProductPrice()));
                 return ResponseEntity.ok(this.cartRepository.save(cart));
             }
-        } else {
-            return ResponseEntity.badRequest().body("Invalid Input");
-        }
+        //} else {
+          //  return ResponseEntity.badRequest().body("Invalid Input");
+        //}
     }
 }

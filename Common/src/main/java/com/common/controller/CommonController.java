@@ -36,7 +36,6 @@ public class CommonController {
     @GetMapping("/getMyDetails/{userId}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<User> getMyDetails (@PathVariable("userId") Long userId) {
-        System.out.println("Hiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
         User user = this.userService.findbyId(userId);
         return new ResponseEntity<>(user,HttpStatus.OK);
     }
@@ -57,7 +56,7 @@ public class CommonController {
     }
 
     //3. delete product by productId
-    // Hiiii
+
     @DeleteMapping("/deleteProduct/{productId}")
     @PreAuthorize("hasRole('ADMIN')")
     public String deleteProductById(@PathVariable("productId") long productId) {
