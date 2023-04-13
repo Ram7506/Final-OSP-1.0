@@ -57,7 +57,7 @@ public class CommonController {
     }
 
     //3. delete product by productId
-
+    // Hiiii
     @DeleteMapping("/deleteProduct/{productId}")
     @PreAuthorize("hasRole('ADMIN')")
     public String deleteProductById(@PathVariable("productId") long productId) {
