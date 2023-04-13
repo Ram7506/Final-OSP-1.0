@@ -112,6 +112,7 @@ public class ProductController {
     @GetMapping("/getProductPrice/{productId}")
     public Long getProductPrice(@PathVariable("productId") Long productId) {
         LOGGER.info("GET /getProductPrice/"+productId);
+        System.out.println();
         return this.productService.getProductPriceById(productId);
     }
 
