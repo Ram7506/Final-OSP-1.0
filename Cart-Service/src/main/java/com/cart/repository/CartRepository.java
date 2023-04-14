@@ -31,4 +31,6 @@ public interface CartRepository extends JpaRepository<Cart,Long> {
     List<Integer> getAllCartId(@Param("uId") Long userId);
 
 
+    @Query(value = "select * from cart where user_id=:uId",nativeQuery = true)
+    List<Cart> getCartById(@Param("uId") Long userId);
 }

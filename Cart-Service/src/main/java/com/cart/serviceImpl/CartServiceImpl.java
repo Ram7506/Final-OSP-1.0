@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CartServiceImpl implements CartService {
 
@@ -46,4 +48,11 @@ public class CartServiceImpl implements CartService {
           //  return ResponseEntity.badRequest().body("Invalid Input");
         //}
     }
+
+    @Override
+    public List<Cart> viewCartByUser(Long userId) {
+        return this.cartRepository.getCartById(userId);
+    }
+
+
 }
